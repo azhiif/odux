@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Odux Art</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-white text-black">
+    <!-- Navbar (same as index.html) -->
+    <nav class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-black">Odux Art</a>
+            <div class="space-x-4 hidden md:block">
+                <a href="index.html" class="text-black hover:text-gray-600">Home</a>
+                <a href="products.html" class="text-black hover:text-gray-600">Products</a>
+                <a href="custom-order.html" class="text-black hover:text-gray-600">Custom Order</a>
+                <a href="contact.html" class="text-black hover:text-gray-600">Contact</a>
+            </div>
+            <button id="mobile-menu-toggle" class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <div class="px-4 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block text-black hover:bg-gray-100 py-2">Home</a>
+                <a href="products.html" class="block text-black hover:bg-gray-100 py-2">Products</a>
+                <a href="custom-order.html" class="block text-black hover:bg-gray-100 py-2">Custom Order</a>
+                <a href="contact.html" class="block text-black hover:bg-gray-100 py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+            <!-- Contact Info -->
+            <div>
+                <h1 class="text-4xl font-bold mb-8">Get in Touch</h1>
+                <div class="space-y-8">
+                    <!-- Call Option -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <i class="fas fa-phone-alt text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-1">Call Us</h3>
+                            <a href="tel:+919072270271" class="text-gray-700 hover:text-black transition">
+                                +91 9072270271
+                            </a>
+                            <p class="text-sm text-gray-500 mt-1">Available 10:00 AM - 8:00 PM</p>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp Option -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-green-100 p-3 rounded-full">
+                            <i class="fab fa-whatsapp text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-1">WhatsApp Us</h3>
+                            <a href="https://wa.me/919072270271?text=Hello%20Odux%20Art%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products." 
+                               target="_blank" 
+                               class="inline-flex items-center text-green-600 hover:text-green-700 transition">
+                                <span>Chat on WhatsApp</span>
+                                <i class="fas fa-external-link-alt ml-2 text-sm"></i>
+                            </a>
+                            <p class="text-sm text-gray-500 mt-1">Quick response guaranteed</p>
+                        </div>
+                    </div>
+
+                    <!-- Instagram -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-pink-100 p-3 rounded-full">
+                            <i class="fab fa-instagram text-pink-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-1">Follow Us</h3>
+                            <a href="https://instagram.com/odux.art" target="_blank" class="text-pink-600 hover:text-pink-700">
+                                @odux.art
+                            </a>
+                            <p class="text-sm text-gray-500 mt-1">See our latest works</p>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-blue-100 p-3 rounded-full">
+                            <i class="fas fa-map-marker-alt text-blue-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold mb-1">Our Location</h3>
+                            <p class="text-gray-700">Thayyalingal, Malappuram</p>
+                            <p class="text-sm text-gray-500 mt-1">Kerala, India</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold mb-6 text-center">Send Us a Message</h2>
+                <form id="contactForm">
+                    <div class="mb-4">
+                        <label for="name" class="block mb-2 font-medium">Your Name</label>
+                        <input type="text" id="name" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Enter your name" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="place" class="block mb-2 font-medium">Your Location</label>
+                        <input type="text" id="place" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Enter your location" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block mb-2 font-medium">Your Message</label>
+                        <textarea id="message" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Type your message here..." required></textarea>
+                    </div>
+                    <button type="button" id="whatsappBtn" class="w-full bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition font-medium flex items-center justify-center">
+                        <i class="fab fa-whatsapp text-xl mr-2"></i> Send via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Maps Section -->
+    <section class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold text-center mb-12">Our Location</h2>
+        <div class="max-w-4xl mx-auto">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.5133243685004!2d75.9107638!3d11.0000599!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7b3d549e4e0e7%3A0x476e864d9e501aa2!2sOdux%20Art%20Studio!5e0!3m2!1sen!2sin!4v1754401873720!5m2!1sen!2sin" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="bg-black text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-4 mb-4">
+                <a href="https://wa.me/9072270271" target="_blank" class="hover:text-green-500">WhatsApp</a>
+                <a href="https://instagram.com/odux.art" target="_blank" class="hover:text-pink-500">Instagram</a>
+            </div>
+            <p>&copy; 2025 Odux Art. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('whatsappBtn').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const place = document.getElementById('place').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !place || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            const whatsappMessage = `Hello Odux Art,%0A%0AName: ${encodeURIComponent(name)}%0ALocation: ${encodeURIComponent(place)}%0AMessage: ${encodeURIComponent(message)}`;
+            window.open(`https://wa.me/919072270271?text=${whatsappMessage}`, '_blank');
+        });
+    </script>
+</body>
+</html>

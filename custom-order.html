@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Order - Odux Art</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="bg-white text-black">
+    <!-- Navbar (same as index.html) -->
+    <nav class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-black">Odux Art</a>
+            <div class="space-x-4 hidden md:block">
+                <a href="index.html" class="text-black hover:text-gray-600">Home</a>
+                <a href="products.html" class="text-black hover:text-gray-600">Products</a>
+                <a href="custom-order.html" class="text-black hover:text-gray-600">Custom Order</a>
+                <a href="contact.html" class="text-black hover:text-gray-600">Contact</a>
+            </div>
+            <button id="mobile-menu-toggle" class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <div class="px-4 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block text-black hover:bg-gray-100 py-2">Home</a>
+                <a href="products.html" class="block text-black hover:bg-gray-100 py-2">Products</a>
+                <a href="custom-order.html" class="block text-black hover:bg-gray-100 py-2">Custom Order</a>
+                <a href="contact.html" class="block text-black hover:bg-gray-100 py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Custom Order Section -->
+    <section class="container mx-auto px-4 py-16">
+        <div class="max-w-2xl mx-auto text-center">
+            <h1 class="text-4xl font-bold mb-6">Create Your Custom Art Frame</h1>
+            <p class="text-xl mb-12">Transform your cherished memories into a stunning piece of art. Upload your photo, and we'll create a personalized masterpiece just for you.</p>
+            
+            <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                <h2 class="text-2xl font-bold mb-6 text-center">Custom Order Details</h2>
+                
+                <form id="customOrderForm" class="space-y-6">
+                    <!-- Name -->
+                    <div>
+                        <label for="customer-name" class="block text-sm font-medium text-gray-700 mb-1">Your Name *</label>
+                        <input type="text" id="customer-name" required 
+                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                               placeholder="Enter your full name">
+                    </div>
+                    
+                    <!-- Phone Number -->
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number *</label>
+                        <input type="tel" id="phone" required 
+                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                               placeholder="Enter your WhatsApp number">
+                    </div>
+                    
+                    <!-- Place -->
+                    <div>
+                        <label for="place" class="block text-sm font-medium text-gray-700 mb-1">Your Location *</label>
+                        <input type="text" id="place" required 
+                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                               placeholder="Enter your city/town">
+                    </div>
+                    
+                    <!-- Occasion -->
+                    <div>
+                        <label for="occasion" class="block text-sm font-medium text-gray-700 mb-1">Occasion (Optional)</label>
+                        <input type="text" id="occasion" 
+                               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                               placeholder="E.g., Birthday, Anniversary, Wedding, etc.">
+                    </div>
+                    
+                    <!-- Photo Upload -->
+                    <div class="mt-8">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Upload Your Photo *</label>
+                        <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg">
+                            <div class="space-y-1 text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                    <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <div class="flex text-sm text-gray-600">
+                                    <label for="photo-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-black hover:text-gray-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-black">
+                                        <span>Upload a file</span>
+                                        <input id="photo-upload" name="photo-upload" type="file" class="sr-only" required>
+                                    </label>
+                                    <p class="pl-1">or drag and drop</p>
+                                </div>
+                                <p class="text-xs text-gray-500">PNG, JPG, JPEG up to 10MB</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Notes -->
+                    <div>
+                        <label for="notes" class="block text-sm font-medium text-gray-700 mb-1">Additional Notes (Optional)</label>
+                        <textarea id="notes" rows="3" 
+                                 class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                                 placeholder="Any special instructions or requirements"></textarea>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <button type="button" id="submitOrder" 
+                            class="w-full bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition font-medium">
+                        Send Order via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="container mx-auto px-4 py-16 bg-gray-50">
+        <h2 class="text-3xl font-bold text-center mb-12">How It Works</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="text-center">
+                <div class="bg-white p-6 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 shadow-md">
+                    <span class="text-3xl font-bold">1</span>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">Upload Photo</h3>
+                <p>Select and upload your favorite photo</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-white p-6 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 shadow-md">
+                    <span class="text-3xl font-bold">2</span>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">Choose Frame</h3>
+                <p>Select frame type and size</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-white p-6 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6 shadow-md">
+                    <span class="text-3xl font-bold">3</span>
+                </div>
+                <h3 class="text-xl font-semibold mb-4">We Create</h3>
+                <p>We craft your personalized art piece</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="bg-black text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-4 mb-4">
+                <a href="https://wa.me/9072270271" target="_blank" class="hover:text-green-500">WhatsApp</a>
+                <a href="https://instagram.com/odux.art" target="_blank" class="hover:text-pink-500">Instagram</a>
+            </div>
+            <p>&copy; 2025 Odux Art. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        document.getElementById('submitOrder').addEventListener('click', function() {
+            const name = document.getElementById('customer-name').value;
+            const phone = document.getElementById('phone').value;
+            const place = document.getElementById('place').value;
+            const occasion = document.getElementById('occasion').value || 'Not specified';
+            const notes = document.getElementById('notes').value || 'No additional notes';
+            
+            // Validate required fields
+            if (!name || !phone || !place) {
+                alert('Please fill in all required fields (Name, Phone, and Location)');
+                return;
+            }
+            
+            // Format the WhatsApp message
+            const message = `*New Custom Order*%0A%0A` +
+                           `*Name:* ${name}%0A` +
+                           `*Phone:* ${phone}%0A` +
+                           `*Location:* ${place}%0A` +
+                           `*Occasion:* ${occasion}%0A` +
+                           `*Notes:* ${notes}%0A%0A` +
+                           `I would like to place a custom order.`;
+            
+            // Open WhatsApp with pre-filled message
+            window.open(`https://wa.me/919072270271?text=${message}`, '_blank');
+        });
+    </script>
+</body>
+</html>
