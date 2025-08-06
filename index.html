@@ -1,290 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Odux - Turn Your Moments into Timeless Art</title>
-    <link rel="icon" type="image/png" href="https://iili.io/FP5Ro2p.png">
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link href="styles.css" rel="stylesheet" />
-    <link href="loader.css" rel="stylesheet" />
-  </head>
-  <body class="bg-white text-black">
-    <!-- Loader -->
-    <div class="loader-container">
-      <img src="https://iili.io/FP5RC4R.png" alt="Odux Art Logo" class="loader">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Odux - Turn Your Moments into Timeless Art</title>
+  <link rel="icon" type="image/png" href="https://iili.io/FP5Ro2p.png">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
+  <link href="loader.css" rel="stylesheet" />
+  <style>
+    /* Slider Styles */
+    #main-slider {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      overflow: hidden;
+    }
+    
+    .slides-container {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s ease-in-out;
+    }
+    
+    .slide {
+      min-width: 100%;
+      height: 100%;
+      flex-shrink: 0;
+    }
+    
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .dot {
+      transition: all 0.3s ease;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      display: inline-block;
+      margin: 0 4px;
+    }
+    
+    .dot.active {
+      background-color: white;
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-black">
+  <!-- Loader -->
+  <div class="loader-container">
+    <img src="https://iili.io/FP5RC4R.png" alt="Odux Art Logo" class="loader">
+  </div>
+  <!-- Navbar -->
+  <nav class="bg-black shadow-sm fixed w-full z-50 top-0">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html" class="flex items-center">
+        <img src="https://iili.io/FP5RC4R.png" alt="Odux Art Logo" class="h-10">
+      </a>
+      <div class="space-x-4 hidden md:block">
+        <a href="index.html" class="text-white hover:text-gray-300 no-underline">Home</a>
+        <a href="index.html" class="text-white hover:text-gray-300 no-underline">Products</a>
+        <a href="custom-order.html" class="text-white hover:text-gray-300 no-underline">Custom Order</a>
+        <a href="contact.html" class="text-white hover:text-gray-300 no-underline">Contact</a>
+      </div>
+      <button id="mobile-menu-toggle" class="md:hidden text-white">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
     </div>
-    <!-- Navbar -->
-    <nav class="bg-black shadow-sm fixed w-full z-50 top-0">
-      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <a href="index.html" class="flex items-center">
-          <img src="https://iili.io/FP5RC4R.png" alt="Odux Art Logo" class="h-10">
-        </a>
-        <div class="space-x-4 hidden md:block">
-          <a href="index.html" class="text-white hover:text-gray-300 no-underline">Home</a>
-          <a href="index.html" class="text-white hover:text-gray-300 no-underline">Products</a>
-          <a href="custom-order.html" class="text-white hover:text-gray-300 no-underline">Custom Order</a>
-          <a href="contact.html" class="text-white hover:text-gray-300 no-underline">Contact</a>
-        </div>
-        <button id="mobile-menu-toggle" class="md:hidden text-white">
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </button>
+    <div id="mobile-menu" class="hidden md:hidden bg-black">
+      <div class="px-4 pt-2 pb-3 space-y-1">
+        <a href="index.html" class="block text-white hover:bg-gray-800 py-2 no-underline">Home</a>
+        <a href="index.html" class="block text-white hover:bg-gray-800 py-2 no-underline">Products</a>
+        <a href="custom-order.html" class="block text-white hover:bg-gray-800 py-2 no-underline">Custom Order</a>
+        <a href="contact.html" class="block text-white hover:bg-gray-800 py-2 no-underline">Contact</a>
       </div>
-      <div id="mobile-menu" class="hidden md:hidden bg-black">
-        <div class="px-4 pt-2 pb-3 space-y-1">
-          <a href="index.html" class="block text-white hover:bg-gray-800 py-2 no-underline">Home</a>
-          <a href="index.html" class="block text-white hover:bg-gray-800 py-2 no-underline">Products</a>
-          <a href="custom-order.html" class="block text-white hover:bg-gray-800 py-2 no-underline">Custom Order</a>
-          <a href="contact.html" class="block text-white hover:bg-gray-800 py-2 no-underline">Contact</a>
-        </div>
-      </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- Add margin to push content below the navbar -->
-    <div class="h-16"></div>
+  <!-- Add margin to push content below the navbar -->
+  <div class="h-16"></div>
 
-    <!-- Hero Banner - Consolidated Slider -->
-    <div class="relative">
-      <div id="main-slider" class="relative w-full">
+  <!-- Hero Banner - Consolidated Slider -->
+  <div class="relative">
+    <div id="main-slider">
+      <div class="slides-container">
         <!-- Slide 1 -->
-        <div class="slide w-full">
-          <img src="https://iili.io/FiuGFHP.jpg" alt="Banner 1" class="w-full h-auto max-h-[60vh] object-cover">
+        <div class="slide">
+          <img src="https://iili.io/FiuGFHP.jpg" alt="Banner 1">
         </div>
         <!-- Slide 2 -->
-        <div class="slide w-full">
-          <img src="https://iili.io/FiuUFdF.jpg" alt="Banner 2" class="w-full h-auto max-h-[60vh] object-cover">
+        <div class="slide">
+          <img src="https://iili.io/FiuUFdF.jpg" alt="Banner 2">
         </div>
         <!-- Slide 3 -->
-        <div class="slide w-full">
-          <img src="https://iili.io/FiuUqmJ.jpg" alt="Banner 3" class="w-full h-auto max-h-[60vh] object-cover">
+        <div class="slide">
+          <img src="https://iili.io/FiuUqmJ.jpg" alt="Banner 3">
         </div>
         <!-- Slide 4 -->
-        <div class="slide w-full">
-          <img src="https://iili.io/FPpaQjt.jpg" alt="Banner 4" class="w-full h-auto max-h-[60vh] object-cover">
+        <div class="slide">
+          <img src="https://iili.io/FPpaQjt.jpg" alt="Banner 4">
         </div>
-      </div>
-    
-      <!-- Navigation -->
-      <button id="prevBtn"
-        class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full text-sm">
-        ❮
-      </button>
-      <button id="nextBtn"
-        class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full text-sm">
-        ❯
-      </button>
-    
-      <!-- Dots -->
-      <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        <span class="dot w-2 h-2 rounded-full bg-white/50 cursor-pointer"></span>
-        <span class="dot w-2 h-2 rounded-full bg-white/50 cursor-pointer"></span>
-        <span class="dot w-2 h-2 rounded-full bg-white/50 cursor-pointer"></span>
-        <span class="dot w-2 h-2 rounded-full bg-white/50 cursor-pointer"></span>
       </div>
     </div>
 
-    <!-- Hero Section -->
-    <header class="w-full">
-      <!-- Slider Container - Full width with no padding -->
-      <div class="relative w-full overflow-hidden">
-        <!-- Removed Slider -->
+    <!-- Navigation -->
+    <button id="prevBtn"
+      class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full text-sm z-10">
+      ❮
+    </button>
+    <button id="nextBtn"
+      class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full text-sm z-10">
+      ❯
+    </button>
+
+    <!-- Dots -->
+    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 z-10">
+      <span class="dot active" data-slide="0"></span>
+      <span class="dot" data-slide="1"></span>
+      <span class="dot" data-slide="2"></span>
+      <span class="dot" data-slide="3"></span>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="w-full">
+    <!-- Slider Container - Full width with no padding -->
+    <div class="relative w-full overflow-hidden">
+      <!-- Removed Slider -->
+    </div>
+
+    <!-- Hero Text Overlay -->
+    <div class="container mx-auto px-4 py-12 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">
+        Turn Your Moments into Timeless Art
+      </h1>
+      <p class="text-xl mb-8">Capture memories, create masterpieces</p>
+      <a href="index.html" class="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition">Shop Now</a>
+    </div>
+  </header>
+
+  <!-- Featured Products -->
+  <section class="container mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <!-- Dummy Product Cards -->
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="https://iili.io/FPQks7s.jpg" alt="momemto" class="w-full h-64 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">Personalized Momento</h3>
+          <p class="text-gray-600">Made on wood with glass</p>
+        </div>
       </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="https://iili.io/FPaWU91.jpg" alt="wooden clock" class="w-full h-64 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">Wooden Engrave</h3>
+          <p class="text-gray-600">Clock with loved ones</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="https://iili.io/FPaWgAF.jpg" alt="Wooden Engrave" class="w-full h-64 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2"> Wooden Engrave</h3>
+          <p class="text-gray-600">Printed on Nature Wood</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="https://iili.io/FPQmQyv.jpg" alt="Wooden Frame" class="w-full h-64 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">Wooden Frame</h3>
+          <p class="text-gray-600">Custom frame for Pic</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="https://iili.io/FPQPVLb.jpg" alt="Curicuts" class="w-full h-64 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">Curicuts</h3>
+          <p class="text-gray-600">High quality tiny gift</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <img src="https://iili.io/FPaWiMv.jpg" alt="Calligraphy" class="w-full h-64 object-cover" />
+        <div class="p-4">
+          <h3 class="text-xl font-semibold mb-2">Calligraphy</h3>
+          <p class="text-gray-600">Custom Made Prints</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom Art Frames -->
+  <section class="container mx-auto px-4 py-16 bg-gray-50">
+    <div class="text-center">
+      <h2 class="text-3xl font-bold mb-6">Create Your Custom Art Frame</h2>
+      <p class="text-xl mb-8">
+        Transform your precious memories into stunning art pieces
+      </p>
+      <a style="text-decoration: none;" href="custom-order.html"
+        class="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition">Upload Your Photo</a>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="bg-black text-white py-16 text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+      <p class="text-xl mb-8">
+        Explore our collection or create your custom art piece today
+      </p>
+      <div class="space-x-4">
+        <a href="index.html" class="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-200 transition">Shop
+          Now</a>
+        <a href="custom-order.html"
+          class="border border-white text-white px-8 py-3 rounded-full hover:bg-gray-900 transition">Custom Order</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <div class="flex justify-center space-x-4 mb-4">
+        <a href="https://wa.me/9072270271" target="_blank" class="hover:text-green-500">WhatsApp</a>
+        <a href="https://instagram.com/odux.art" target="_blank" class="hover:text-pink-500">Instagram</a>
+      </div>
+      <p>&copy; 2025 Odux Art. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const slidesContainer = document.querySelector('.slides-container');
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+      let currentSlide = 0;
+      let slideInterval;
+
+      function showSlide(index) {
+        // Ensure index is within bounds
+        if (index >= slides.length) index = 0;
+        if (index < 0) index = slides.length - 1;
+        
+        // Update current slide
+        currentSlide = index;
+        
+        // Move the slides container
+        slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Update dots
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentSlide);
+        });
+      }
       
-      <!-- Hero Text Overlay -->
-      <div class="container mx-auto px-4 py-12 text-center">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">
-          Turn Your Moments into Timeless Art
-        </h1>
-        <p class="text-xl mb-8">Capture memories, create masterpieces</p>
-        <a
-          href="index.html"
-          class="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition"
-          >Shop Now</a
-        >
-      </div>
-    </header>
-
-    <!-- Featured Products -->
-    <section class="container mx-auto px-4 py-16">
-      <h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        <!-- Dummy Product Cards -->
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <img src="https://iili.io/FPQks7s.jpg" alt="momemto" class="w-full h-64 object-cover" />
-          <div class="p-4">
-            <h3 class="text-xl font-semibold mb-2">Personalized Momento</h3>
-            <p class="text-gray-600">Made on wood with glass</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <img src="https://iili.io/FPaWU91.jpg" alt="wooden clock" class="w-full h-64 object-cover" />
-          <div class="p-4">
-            <h3 class="text-xl font-semibold mb-2">Wooden Engrave</h3>
-            <p class="text-gray-600">Clock with loved ones</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <img src="https://iili.io/FPaWgAF.jpg" alt="Wooden Engrave" class="w-full h-64 object-cover" />
-          <div class="p-4">
-            <h3 class="text-xl font-semibold mb-2"> Wooden Engrave</h3>
-            <p class="text-gray-600">Printed on Nature Wood</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <img src="https://iili.io/FPQmQyv.jpg" alt="Wooden Frame" class="w-full h-64 object-cover" />
-          <div class="p-4">
-            <h3 class="text-xl font-semibold mb-2">Wooden Frame</h3>
-            <p class="text-gray-600">Custom frame for Pic</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <img src="https://iili.io/FPQPVLb.jpg" alt="Curicuts" class="w-full h-64 object-cover" />
-          <div class="p-4">
-            <h3 class="text-xl font-semibold mb-2">Curicuts</h3>
-            <p class="text-gray-600">High quality tiny gift</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-          <img src="https://iili.io/FPaWiMv.jpg" alt="Calligraphy" class="w-full h-64 object-cover" />
-          <div class="p-4">
-            <h3 class="text-xl font-semibold mb-2">Calligraphy</h3>
-            <p class="text-gray-600">Custom Made Prints</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Custom Art Frames -->
-    <section class="container mx-auto px-4 py-16 bg-gray-50">
-      <div class="text-center">
-        <h2 class="text-3xl font-bold mb-6">Create Your Custom Art Frame</h2>
-        <p class="text-xl mb-8">
-          Transform your precious memories into stunning art pieces
-        </p>
-        <a style="text-decoration: none;"
-          href="custom-order.html"
-          class="bg-black text-white px-8 py-3 rounded-full hover:bg-gray-800 transition"
-          >Upload Your Photo</a
-        >
-      </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="bg-black text-white py-16 text-center">
-      <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-        <p class="text-xl mb-8">
-          Explore our collection or create your custom art piece today
-        </p>
-        <div class="space-x-4">
-          <a
-            href="index.html"
-            class="bg-white text-black px-8 py-3 rounded-full hover:bg-gray-200 transition"
-            >Shop Now</a
-          >
-          <a
-            href="custom-order.html"
-            class="border border-white text-white px-8 py-3 rounded-full hover:bg-gray-900 transition"
-            >Custom Order</a
-          >
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black text-white py-8">
-      <div class="container mx-auto px-4 text-center">
-        <div class="flex justify-center space-x-4 mb-4">
-          <a
-            href="https://wa.me/9072270271"
-            target="_blank"
-            class="hover:text-green-500"
-            >WhatsApp</a
-          >
-          <a
-            href="https://instagram.com/odux.art"
-            target="_blank"
-            class="hover:text-pink-500"
-            >Instagram</a
-          >
-        </div>
-        <p>&copy; 2025 Odux Art. All rights reserved.</p>
-      </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const slider = document.getElementById('slider');
-        const slides = document.querySelectorAll('#slider > div');
-        const dots = document.querySelectorAll('[data-slide]');
-        let currentSlide = 0;
-        const totalSlides = 2; // Updated to 2 slides
-
-        function showSlide(index) {
-          if (index >= totalSlides) {
-            currentSlide = 0;
-          } else if (index < 0) {
-            currentSlide = totalSlides - 1;
-          } else {
-            currentSlide = index;
-          }
-          
-          const offset = -currentSlide * 100;
-          slider.style.transform = `translateX(${offset}%)`;
-          
-          // Update active dot
-          dots.forEach((dot, i) => {
-            dot.classList.toggle('bg-opacity-50', i !== currentSlide);
-            dot.classList.toggle('bg-opacity-100', i === currentSlide);
-          });
-        }
-        
-        // Navigation buttons
-        document.getElementById('prevBtn').addEventListener('click', () => {
-          showSlide(currentSlide - 1);
-        });
-        
-        document.getElementById('nextBtn').addEventListener('click', () => {
-          showSlide(currentSlide + 1);
-        });
-        
-        // Dot navigation
-        dots.forEach((dot, index) => {
-          dot.addEventListener('click', () => {
-            showSlide(index);
-          });
-        });
-        
-        // Auto-advance slides every 5 seconds
-        setInterval(() => {
-          showSlide(currentSlide + 1);
-        }, 5000);
-        
-        // Initialize first slide
-        showSlide(0);
+      function nextSlide() {
+        showSlide(currentSlide + 1);
+      }
+      
+      function startSlider() {
+        slideInterval = setInterval(nextSlide, 5000);
+      }
+      
+      // Initialize
+      showSlide(0);
+      startSlider();
+      
+      // Navigation
+      document.getElementById('prevBtn').addEventListener('click', () => {
+        clearInterval(slideInterval);
+        showSlide(currentSlide - 1);
+        startSlider();
       });
-    </script>
-  </body>
+      
+      document.getElementById('nextBtn').addEventListener('click', () => {
+        clearInterval(slideInterval);
+        showSlide(currentSlide + 1);
+        startSlider();
+      });
+      
+      // Dot navigation
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          clearInterval(slideInterval);
+          showSlide(index);
+          startSlider();
+        });
+      });
+      
+      // Pause on hover
+      const slider = document.getElementById('main-slider');
+      slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+      slider.addEventListener('mouseleave', startSlider);
+    });
+  </script>
+</body>
+
 </html>
